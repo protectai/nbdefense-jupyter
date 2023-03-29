@@ -1,10 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for NB Defense Jupyter
-title: "[A Few Words Describing the Feature]"
+title: '[A Few Words Describing the Feature]'
 labels: enhancement
 assignees: ''
-
 ---
 
 **Is your feature request related to a problem? Please describe.**

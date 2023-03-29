@@ -1,0 +1,52 @@
+name: Build
+
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Necessary to get tags
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install Jupyter Lab
+        run: |
+          pip install -U jupyterlab~=3.1
+      - name: Lint the extension
+        run: |
+          jlpm
+          jlpm run lint:check
+      - name: Get Release Version
+        uses: mtkennerly/dunamai-action@v1
+        with:
+          env-var: NBD_JLE_VERSION
+          args: --style semver --format "{base}-dev.{distance}+{commit}"
+      - name: Set Version
+        run: |
+          echo "__version__ = '$NBD_JLE_VERSION'" > nbdefense_jupyter/_version.py
+          jlpm version --new-version $NBD_JLE_VERSION --no-git-tag-version --no-commit-hooks
+      - name: Install Dependencies
+        run: |
+          make install
+      - name: Check Extension
+        run: |
+          jupyter server extension enable nbdefense_jupyter
+          jupyter server extension list
+          jupyter server extension list 2>&1 | grep -ie "nbdefense_jupyter.*OK"
+
+          jupyter labextension list
+          jupyter labextension list 2>&1 | grep -ie "nbdefense-jupyter.*OK"
+          python -m jupyterlab.browser_check
+      - name: Package the extension
+        run: |
+          make build-prod
+          pip uninstall -y "nbdefense_jupyter" jupyterlab

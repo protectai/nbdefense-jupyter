@@ -1,0 +1,34 @@
+/*
+    See the JupyterLab Developer Guide for useful CSS Patterns:
+
+    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
+*/
+
+.nbdefense-cell-input-error {
+  background-color: rgb(208 17 0 / 10%);
+}
+
+.nbdefense-cell-input-error:hover > .nbdefense-cell-error-dropdown {
+  max-height: 600px;
+}
+
+.nbdefense-cell-input-collapser-error {
+  background: #d01100;
+}
+
+.nbdefense-syntax-error {
+  text-decoration: underline wavy var(--jp-error-color1);
+  -webkit-text-decoration: underline wavy var(--jp-error-color1);
+}
+
+.nbdefense-table-error {
+  background-color: rgb(208 17 0 / 10%);
+}
+
+.nbdefense-toolbar-switch {
+  margin-left: 10px;
+}
+
+.nbdefense-error-link {
+  color: #1976d2;
+}
