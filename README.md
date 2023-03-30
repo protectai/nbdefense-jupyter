@@ -1,7 +1,5 @@
 # nbdefense_jupyter
 
-[![Github Actions Status](https://github.com/protectai/nbdefense-jupyter/workflows/Build/badge.svg)](https://github.com/github_username/nbdefense-jupyter/actions/workflows/build.yml)
-
 The NBDefense Jupyter extension
 
 This extension is composed of a Python package named `nbdefense_jupyter`
