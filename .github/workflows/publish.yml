@@ -1,0 +1,38 @@
+name: Build and Publish Release to PYPI
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Necessary to get tags
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install Jupyter Lab
+        run: |
+          pip install -U jupyterlab~=3.1
+      - name: Get Release Version
+        uses: mtkennerly/dunamai-action@v1
+        with:
+          env-var: NBD_JLE_VERSION
+          args: --style semver --format "{base}"
+      - name: Set Version
+        run: |
+          echo "__version__ = '$NBD_JLE_VERSION'" > nbdefense_jupyter/_version.py
+          jlpm version --new-version $NBD_JLE_VERSION --no-git-tag-version --no-commit-hooks
+      - name: Package the extension
+        run: |
+          make build-prod
+      - name: Publish the Extension
+        run: |
+          pip install hatch==1.6.3
+          hatch publish --user __token__ --auth ${{ secrets.NBDEFENSE_JLE_PYPI_API_TOKEN }}

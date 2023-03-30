@@ -1,0 +1,78 @@
+[build-system]
+requires = [
+    "hatchling>=1.3.1",
+    "jupyterlab>=3.4.7,<4.0.0",
+    "hatch-nodejs-version",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "nbdefense_jupyter"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Framework :: Jupyter",
+    "Framework :: Jupyter :: JupyterLab",
+    "Framework :: Jupyter :: JupyterLab :: 3",
+    "Framework :: Jupyter :: JupyterLab :: Extensions",
+    "Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "nbdefense==1.0.1"
+]
+dynamic = ["version", "description", "authors", "urls", "keywords"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+dev = ["black==22.8.0", "pre-commit==2.20.0", "jupyterlab>=3.1,<4.0.0"]
+
+[tool.hatch.version]
+path = "nbdefense_jupyter/_version.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.metadata.hooks.nodejs]
+fields = ["description", "authors", "urls"]
+
+[tool.hatch.build]
+artifacts = ["nbdefense_jupyter/labextension", "nbdefense/*"]
+include = ["nbdefense_jupyter/*.py", "package.json"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"nbdefense_jupyter/labextension" = "share/jupyter/labextensions/nbdefense-jupyter"
+"install.json" = "share/jupyter/labextensions/nbdefense-jupyter/install.json"
+"jupyter-config/server-config" = "etc/jupyter/jupyter_server_config.d"
+"jupyter-config/nb-config" = "etc/jupyter/jupyter_notebook_config.d"
+
+[tool.hatch.build.targets.sdist]
+exclude = [".github"]
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = ["hatch-jupyter-builder>=0.5"]
+build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "nbdefense_jupyter/labextension/static/style.js",
+    "nbdefense_jupyter/labextension/package.json",
+]
+skip-if-exists = ["nbdefense_jupyter/labextension/static/style.js"]
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+build_cmd = "build:prod"
+npm = ["jlpm"]
+
+[tool.hatch.build.hooks.jupyter-builder.editable-build-kwargs]
+build_cmd = "install:extension"
+npm = ["jlpm"]
+source_dir = "src"
+build_dir = "nbdefense_jupyter/labextension"
+
+[tool.jupyter-releaser.options]
+version_cmd = "hatch version"

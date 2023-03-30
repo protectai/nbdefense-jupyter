@@ -1,0 +1,381 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "nbdefense-jupyter",
+  "description": "nbdefense-jupyter settings.",
+  "type": "object",
+  "properties": {
+    "isContextualHelpVisible": {
+      "title": "Show Contextual Help",
+      "description": "Show error highlighting for issues detected in a scan.",
+      "type": "boolean",
+      "default": true
+    },
+    "isNBDefenseDropdownVisible": {
+      "title": "Show dropdowns",
+      "description": "Show dropdown overlay on cells with issue details.",
+      "type": "boolean",
+      "default": true
+    },
+    "scanSettings": {
+      "title": "Scan Settings",
+      "description": "Settings for NBDefense Scan",
+      "type": "object",
+      "properties": {
+        "redact_secret": {
+          "title": "Redact Secrets",
+          "description": "Possible values are PARTIAL, ALL, and HASH. PARTIAL will show only leading and trailing characters. ALL will shadow the full secret. HASH will replace the full secret with its hashed value.",
+          "type": "string",
+          "enum": ["PARTIAL", "ALL", "HASH"],
+          "default": "PARTIAL"
+        },
+        "plugins": {
+          "title": "Plugins",
+          "description": "Settings for NB Defense Plugins",
+          "type": "object",
+          "properties": {
+            "nbdefense.plugins.SecretsPlugin": {
+              "title": "Secrets Plugin",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Enabled",
+                  "type": "boolean",
+                  "default": true
+                },
+                "secrets_plugins": {
+                  "title": "Secrets Plugins",
+                  "type": "object",
+                  "properties": {
+                    "SoftlayerDetector": {
+                      "title": "SoftlayerDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "StripeDetector": {
+                      "title": "StripeDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "SendGridDetector": {
+                      "title": "SendGridDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "NpmDetector": {
+                      "title": "NpmDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "KeywordDetector": {
+                      "title": "KeywordDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "KeywordDetector@keyword_exclude": {
+                      "title": "keyword_exclude",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "IbmCosHmacDetector": {
+                      "title": "IbmCosHmacDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "DiscordBotTokenDetector": {
+                      "title": "DiscordBotTokenDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "BasicAuthDetector": {
+                      "title": "BasicAuthDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "AzureStorageKeyDetector": {
+                      "title": "AzureStorageKeyDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "ArtifactoryDetector": {
+                      "title": "ArtifactoryDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "AWSKeyDetector": {
+                      "title": "AWSKeyDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "CloudantDetector": {
+                      "title": "CloudantDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "GitHubTokenDetector": {
+                      "title": "GitHubTokenDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "IbmCloudIamDetector": {
+                      "title": "IbmCloudIamDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "JwtTokenDetector": {
+                      "title": "JwtTokenDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "MailchimpDetector": {
+                      "title": "MailchimpDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "PrivateKeyDetector": {
+                      "title": "PrivateKeyDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "SlackDetector": {
+                      "title": "SlackDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "SquareOAuthDetector": {
+                      "title": "SquareOAuthDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "TwilioKeyDetector": {
+                      "title": "TwilioKeyDetector",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "Base64HighEntropyString": {
+                      "title": "Base64HighEntropyString",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "Base64HighEntropyString@limit": {
+                      "title": "Limit",
+                      "type": "number",
+                      "default": 4.5
+                    },
+                    "HexHighEntropyString": {
+                      "title": "HexHighEntropyString",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "HexHighEntropyString@limit": {
+                      "title": "Limit",
+                      "type": "number",
+                      "default": 3.0
+                    }
+                  }
+                }
+              }
+            },
+            "nbdefense.plugins.PIIPlugin": {
+              "title": "PII Plugin",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Enabled",
+                  "type": "boolean",
+                  "default": true
+                },
+                "confidence_threshold": {
+                  "title": "Confidence Threshold",
+                  "type": "number",
+                  "default": 0.8
+                },
+                "entities": {
+                  "title": "Entities",
+                  "type": "object",
+                  "properties": {
+                    "US_PASSPORT": {
+                      "title": "US_PASSPORT",
+                      "type": "boolean",
+                      "description": "A US passport number with 9 digits.",
+                      "default": true
+                    },
+                    "AU_MEDICARE": {
+                      "title": "AU_MEDICARE",
+                      "type": "boolean",
+                      "description": "Medicare number is a unique identifier issued by Australian Government that enables the cardholder to receive a rebates of medical expenses under Australia's Medicare system.",
+                      "default": true
+                    },
+                    "AU_TFN": {
+                      "title": "AU_TFN",
+                      "type": "boolean",
+                      "description": "The tax file number (TFN) is a unique identifier issued by the Australian Taxation Office to each taxpaying entity.",
+                      "default": true
+                    },
+                    "AU_ACN": {
+                      "title": "AU_ACN",
+                      "type": "boolean",
+                      "description": "An Australian Company Number is a unique nine-digit number issued by the Australian Securities and Investments Commission to every company registered under the Commonwealth Corporations Act 2001 as an identifier.",
+                      "default": true
+                    },
+                    "AU_ABN": {
+                      "title": "AU_ABN",
+                      "type": "boolean",
+                      "description": "The Australian Business Number (ABN) is a unique 11 digit identifier issued to all entities registered in the Australian Business Register (ABR).",
+                      "default": true
+                    },
+                    "UK_NHS": {
+                      "title": "UK_NHS",
+                      "type": "boolean",
+                      "description": "A UK NHS number is 10 digits.",
+                      "default": true
+                    },
+                    "US_SSN": {
+                      "title": "US_SSN",
+                      "type": "boolean",
+                      "description": "A US Social Security Number (SSN) with 9 digits.",
+                      "default": true
+                    },
+                    "US_ITIN": {
+                      "title": "US_ITIN",
+                      "type": "boolean",
+                      "description": "US Individual Taxpayer Identification Number (ITIN). Nine digits that start with a \"9\" and contain a \"7\" or \"8\" as the 4 digit.",
+                      "default": true
+                    },
+                    "US_DRIVER_LICENSE": {
+                      "title": "US_DRIVER_LICENSE",
+                      "type": "boolean",
+                      "description": "A US driver license number.",
+                      "default": true
+                    },
+                    "US_BANK_NUMBER": {
+                      "title": "US_BANK_NUMBER",
+                      "type": "boolean",
+                      "description": "A US bank account number is between 8 to 17 digits.",
+                      "default": true
+                    },
+                    "MEDICAL_LICENSE": {
+                      "title": "MEDICAL_LICENSE",
+                      "type": "boolean",
+                      "description": "Common medical license numbers.",
+                      "default": true
+                    },
+                    "LOCATION": {
+                      "title": "LOCATION",
+                      "type": "boolean",
+                      "description": "Name of politically or geographically defined location (cities, provinces, countries, international regions, bodies of water, mountains.",
+                      "default": true
+                    },
+                    "PHONE_NUMBER": {
+                      "title": "PHONE_NUMBER",
+                      "type": "boolean",
+                      "description": "A telephone number.",
+                      "default": true
+                    },
+                    "NRP": {
+                      "title": "NRP",
+                      "type": "boolean",
+                      "description": "A person's nationality, religious or political group.",
+                      "default": true
+                    },
+                    "IP_ADDRESS": {
+                      "title": "IP_ADDRESS",
+                      "type": "boolean",
+                      "description": "An Internet Protocol (IP) address (either IPv4 or IPv6).",
+                      "default": true
+                    },
+                    "EMAIL_ADDRESS": {
+                      "title": "EMAIL_ADDRESS",
+                      "type": "boolean",
+                      "description": "An email address identifies an email box to which email messages are delivered.",
+                      "default": true
+                    },
+                    "IBAN_CODE": {
+                      "title": "IBAN_CODE",
+                      "type": "boolean",
+                      "description": "The International Bank Account Number (IBAN) is an internationally agreed system of identifying bank accounts across national borders to facilitate the communication and processing of cross border transactions with a reduced risk of transcription errors.",
+                      "default": true
+                    },
+                    "CRYPTO": {
+                      "title": "CRYPTO",
+                      "type": "boolean",
+                      "description": "A Crypto wallet number. Currently only Bitcoin address is supported.",
+                      "default": true
+                    },
+                    "CREDIT_CARD": {
+                      "title": "CREDIT_CARD",
+                      "type": "boolean",
+                      "description": "A credit card number is between 12 to 19 digits.",
+                      "default": true
+                    },
+                    "PERSON": {
+                      "title": "PERSON",
+                      "description": "A full person name, which can include first names, middle names or initials, and last names.",
+                      "type": "boolean",
+                      "default": true
+                    }
+                  }
+                }
+              }
+            },
+            "nbdefense.plugins.LicenseNotebookPlugin": {
+              "title": "License Plugin",
+              "description": "Scans dependencies to ensure license compatibility.",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Enabled",
+                  "type": "boolean",
+                  "default": true
+                },
+                "accepted_licenses": {
+                  "title": "Accepted Licenses",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": [
+                    "Apache License 2.0",
+                    "Apache Software License",
+                    "Apache 2.0",
+                    "Apache-2.0",
+                    "BSD",
+                    "BSD License",
+                    "BSD 3-Clause",
+                    "BSD-3-Clause",
+                    "GNU Library or Lesser General Public License (LGPL)",
+                    "Microsoft Public License",
+                    "MIT",
+                    "MIT License",
+                    "Python Software Foundation License",
+                    "ISC License (ISCL)",
+                    "MIT-0"
+                  ]
+                },
+                "licenses_for_notebooks_source": {
+                  "title": "License Source",
+                  "description": "Possible values are `hybrid`, `local`, and `pypi`. `local` will look for license data in locally installed dependencies only. `pypi` will try to find license data using the PYPI api. `hybrid` looks for license data locally, and will fallback to the PYPI api if the license is not found.",
+                  "type": "string",
+                  "enum": ["hybrid", "local", "pypi"],
+                  "default": "hybrid"
+                }
+              }
+            },
+            "nbdefense.plugins.CVENotebookPlugin": {
+              "title": "CVE Plugin",
+              "description": "Scans dependencies for versions flagged by the Common Vulnerabilities and Exposures (CVE) system.",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Enabled",
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
