@@ -1,7 +1,7 @@
 {
   "name": "nbdefense-jupyter",
   "version": "0.2.0",
-  "description": "The NBDefense Jupyter extension",
+  "description": "NB Defense Jupyter Lab Extension",
   "keywords": [
     "jupyter",
     "jupyterlab",
