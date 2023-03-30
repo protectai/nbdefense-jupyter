@@ -24,6 +24,18 @@ If you are planning on using the PII module you will need to install `en_core_we
 python -m spacy download en_core_web_trf
 ```
 
+Enable the extension
+
+```bash
+jupyter server extension enable nbdefense_jupyter
+```
+
+Start (or restart) the Jupyter Lab Server
+
+```bash
+jupyter lab
+```
+
 ## Uninstall
 
 To remove the extension, execute:
