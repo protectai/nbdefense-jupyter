@@ -109,7 +109,3 @@ folder is located. Then you can remove the symlink named `nbdefense-jupyter` wit
 3. Copy the file to the `nbdefense_cli` directory
 4. Update the dependency in the `pyproject.toml` file to match the new filename
 5. Re-run `pip install -e .`
-
-### Packaging the extension
-
-See [RELEASE](RELEASE.md)
