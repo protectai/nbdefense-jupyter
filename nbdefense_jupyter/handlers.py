@@ -51,7 +51,10 @@ class NBDefenseWSRouteHandler(tornado.websocket.WebSocketHandler):
                             / "nbdefense_tmp/",
                             plugins_to_load=JLE_PLUGINS,
                             site_packages_path=site_packages_path,
-                            settings={**DEFAULT_SETTINGS, **data["scanSettings"]},
+                            settings={
+                                **DEFAULT_SETTINGS,
+                                **data.get("scanSettings", {}),
+                            },
                         ),
                     )
                     self.write_message(
