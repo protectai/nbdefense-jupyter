@@ -25,7 +25,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
 ]
 dependencies = [
-    "nbdefense==1.0.2"
+    "nbdefense==1.0.3"
 ]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 
