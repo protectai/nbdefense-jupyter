@@ -178,7 +178,7 @@ const NBDefensePanel: React.FC<INBDefensePanelProps> = ({
     if (currentNotebookPath) {
       const rawSettings = settings.get('scanSettings')
         .composite as ScanSettings;
-      const scanSettings = getScanSettings(rawSettings);
+      const scanSettings = rawSettings ? getScanSettings(rawSettings) : {};
       // Websockets code
       dispatchResults({
         notebookPath: currentNotebookPath,
