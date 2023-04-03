@@ -6,8 +6,8 @@
 ## 🏃‍♀️ Quick Start
 
 ```bash
-$ pip install nbdefense_jypter
-$ jupyter server extension enable nbdefense_jupyter
+pip install nbdefense_jupyter
+jupyter server extension enable nbdefense_jupyter
 ```
 
 ## 🙋‍♂️ What is the NB Defense Jupyter Lab Extension?
