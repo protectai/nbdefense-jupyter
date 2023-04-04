@@ -1,6 +1,7 @@
 # 🛡️ NB Defense Jupyter Lab Extension
 
 [![Build](https://github.com/protectai/nbdefense-jupyter/actions/workflows/build.yml/badge.svg)](https://github.com/protectai/nbdefense-jupyter/actions/workflows/build.yml)
+[![Test](https://github.com/protectai/nbdefense-jupyter/actions/workflows/test.yml/badge.svg)](https://github.com/protectai/nbdefense-jupyter/actions/workflows/test.yml)
 [![License: Apache 2.0](https://img.shields.io/crates/l/apa)](https://opensource.org/license/apache-2-0/)
 
 ## 🏃‍♀️ Quick Start
