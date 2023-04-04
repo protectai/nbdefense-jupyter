@@ -30,7 +30,7 @@ jobs:
           CACHE_NUMBER: 0
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ env.CACHE_NUMBER }}-${{ hashFiles('**/setup.py') }}
+          key: ${{ runner.os }}-pip-${{ env.CACHE_NUMBER }}-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-pip-${{ env.CACHE_NUMBER }}
             ${{ runner.os }}-pip-
