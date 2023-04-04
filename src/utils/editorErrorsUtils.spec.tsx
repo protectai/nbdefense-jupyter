@@ -161,7 +161,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.PLAINTEXT,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index,
@@ -175,7 +176,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.STREAM,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index,
@@ -263,7 +265,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.PLAINTEXT,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index: first_character_start_index,
@@ -277,7 +280,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.PLAINTEXT,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index: second_character_start_index,
@@ -291,7 +295,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.PLAINTEXT,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index: third_character_start_index,
@@ -305,7 +310,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.STREAM,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index: first_character_start_index,
@@ -319,7 +325,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.STREAM,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index: second_character_start_index,
@@ -333,7 +340,8 @@ describe('editorErrorsUtils', () => {
             cell: {
               cell_index: 1,
               cell_type: CellType.STREAM,
-              scrubbed_content: ''
+              scrubbed_content: '',
+              output_index: 1
             },
             details: {},
             character_start_index: third_character_start_index,
