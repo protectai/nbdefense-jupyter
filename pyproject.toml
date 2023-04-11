@@ -24,9 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-dependencies = [
-    "nbdefense==1.0.3"
-]
+dependencies = ["nbdefense==1.0.4"]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 
 [project.optional-dependencies]
