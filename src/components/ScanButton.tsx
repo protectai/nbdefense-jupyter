@@ -1,8 +1,13 @@
 import React from 'react';
 import { loadingIcon } from '../style/icons';
-import { loadingIconStyle, scanButtonStyle } from '../style/ScanButtonStyle';
+import {
+  disabledButtonStyle,
+  loadingIconStyle,
+  scanButtonStyle
+} from '../style/ScanButtonStyle';
 
 interface IScanButtonProps {
+  disabled: boolean;
   isLoading: boolean;
   scanExists: boolean;
   onClick: () => Promise<void>;
@@ -11,10 +16,15 @@ interface IScanButtonProps {
 const ScanButton: React.FC<IScanButtonProps> = ({
   isLoading,
   scanExists,
-  onClick
+  onClick,
+  disabled
 }) => {
   return (
-    <button disabled={isLoading} onClick={onClick} className={scanButtonStyle}>
+    <button
+      disabled={isLoading || disabled}
+      onClick={onClick}
+      className={disabled ? disabledButtonStyle : scanButtonStyle}
+    >
       {isLoading ? (
         <>
           <loadingIcon.react className={loadingIconStyle} /> Scanning...

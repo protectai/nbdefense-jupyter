@@ -1,6 +1,6 @@
 import { style } from 'typestyle';
 
-export const scanButtonStyle = style({
+const baseButtonStyle = {
   display: 'flex',
   justifyContent: 'center',
   marginTop: '16px',
@@ -11,13 +11,23 @@ export const scanButtonStyle = style({
   color: 'white',
   cursor: 'pointer',
   lineHeight: '16px',
-  fontSize: '14px',
+  fontSize: '14px'
+};
+
+export const scanButtonStyle = style({
+  ...baseButtonStyle,
   $nest: {
     '&:disabled': {
       opacity: 0.5,
       cursor: 'wait'
     }
   }
+});
+
+export const disabledButtonStyle = style({
+  ...baseButtonStyle,
+  opacity: 0.5,
+  cursor: 'default'
 });
 
 export const loadingIconStyle = style({

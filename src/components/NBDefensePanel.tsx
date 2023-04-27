@@ -22,11 +22,11 @@ import ScanButton from './ScanButton';
 import { NBDefenseWidget } from '../widgets/NBDefenseWidget';
 import NBDefenseHeader from './NBDefenseHeader';
 import CurrentScanPath from './CurrentScanPath';
-import DirtyStateWarning from './DirtyStateWarning';
+import MessageBox from './MessageBox';
 import ErrorMessage from './ErrorMessage';
 import KernelTracker from './KernelTracker';
 import { getScanSettings } from '../utils/scanSettingUtils';
-import { isReport, isScanError, ScanSettings } from '../types';
+import { isReport, isScanError, MessageLevel, ScanSettings } from '../types';
 
 interface INBDefensePanelProps {
   notebookTracker: INotebookTracker;
@@ -71,7 +71,12 @@ const NBDefensePanel: React.FC<INBDefensePanelProps> = ({
 
   // Websockets code
   const [socketUrl, setSocketUrl] = useState<string | null>(null);
-  const { sendJsonMessage, lastJsonMessage } = useWebSocket(socketUrl);
+  const [connRefused, setConnRefused] = useState<boolean>(false);
+  const { sendJsonMessage, lastJsonMessage } = useWebSocket(socketUrl, {
+    onError: () => {
+      setConnRefused(true);
+    }
+  });
 
   useEffect(() => {
     const settings = ServerConnection.makeSettings();
@@ -219,7 +224,18 @@ const NBDefensePanel: React.FC<INBDefensePanelProps> = ({
         <LastUpdatedTime results={results} notebookPath={currentNotebookPath} />
         {currentNotebookPath &&
           results[currentNotebookPath] &&
-          results[currentNotebookPath].isDirty && <DirtyStateWarning />}
+          results[currentNotebookPath].isDirty && (
+            <MessageBox
+              message="The notebook contents have changed since the last run. The results maybe outdated."
+              level={MessageLevel.WARN}
+            />
+          )}
+        {connRefused && (
+          <MessageBox
+            message="Could not connect to the NB Defense server. Make sure to enable the NB Defense server extension."
+            level={MessageLevel.ERROR}
+          />
+        )}
         <ScanButton
           isLoading={
             currentNotebookPath !== undefined &&
@@ -228,6 +244,7 @@ const NBDefensePanel: React.FC<INBDefensePanelProps> = ({
           }
           onClick={runScan}
           scanExists={!!(currentNotebookPath && results[currentNotebookPath])}
+          disabled={connRefused}
         />
         {currentNotebookPath && results[currentNotebookPath] && (
           <>
