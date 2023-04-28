@@ -3,7 +3,6 @@ requires = [
     "hatchling>=1.3.1",
     "jupyterlab>=3.4.7,<4.0.0",
     "hatch-nodejs-version",
-    "ipython>=8.12.0,<8.13",
 ]
 build-backend = "hatchling.build"
 
@@ -29,7 +28,7 @@ dependencies = ["nbdefense==1.0.4"]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-cov"]
+test = ["pytest", "pytest-cov", "ipython>=8.12.0,<8.13"]
 dev = ["black==22.8.0", "pre-commit==2.20.0", "jupyterlab>=3.1,<4.0.0"]
 
 [tool.hatch.version]
