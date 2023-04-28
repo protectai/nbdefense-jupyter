@@ -140,6 +140,11 @@ export type ScanError = {
   message: string;
 };
 
+export enum MessageLevel {
+  WARN = 'warn',
+  ERROR = 'error'
+}
+
 export type CVENotebookPluginSettings = {
   enabled: boolean;
 };
