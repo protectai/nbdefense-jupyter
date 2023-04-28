@@ -226,7 +226,7 @@ const NBDefensePanel: React.FC<INBDefensePanelProps> = ({
           results[currentNotebookPath] &&
           results[currentNotebookPath].isDirty && (
             <MessageBox
-              message="The notebook contents have changed since the last run. The results maybe outdated."
+              message="The notebook contents have changed since the last run. The results may be outdated."
               level={MessageLevel.WARN}
             />
           )}
