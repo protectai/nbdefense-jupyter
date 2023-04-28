@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0 # Necessary to get tags
       - uses: actions/setup-python@v2
         with:
-          python-version: "3.8"
+          python-version: "3.9"
       - name: Install Jupyter Lab
         run: |
           pip install -U jupyterlab~=3.1
