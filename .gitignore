@@ -1,12 +1,15 @@
 *.bundle.*
 lib/
 node_modules/
+*.log
 .eslintcache
 .stylelintcache
 *.egg-info/
 .ipynb_checkpoints
 *.tsbuildinfo
 nbdefense_jupyter/labextension
+# Version file is handled by hatchling
+nbdefense_jupyter/_version.py
 
 # Integration tests
 ui-tests/test-results/
@@ -62,6 +65,7 @@ htmlcov/
 .coverage.*
 .cache
 nosetests.xml
+coverage/
 coverage.xml
 *.cover
 .hypothesis/
@@ -125,3 +129,6 @@ nbdefense/
 .vscode
 
 coverage/
+
+# Yarn cache
+.yarn/

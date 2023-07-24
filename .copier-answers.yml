@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.0.9
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: support@protectai.com
+author_name: ProtectAI
+has_binder: false
+has_settings: true
+kind: server
+labextension_name: nbdefense-jupyter
+project_short_description: NB Defense Jupyter Lab Extension
+python_name: nbdefense_jupyter
+repository: https://github.com/protectai/nbdefense-jupyter.git
+test: true
+
