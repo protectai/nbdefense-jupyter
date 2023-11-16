@@ -20,7 +20,7 @@ jobs:
           python-version: "3.9"
       - name: Install Jupyter Lab
         run: |
-          pip install -U jupyterlab~=3.1
+          pip install -U jupyterlab~=3.6
       - name: Lint the extension
         run: |
           jlpm
