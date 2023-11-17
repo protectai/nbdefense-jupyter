@@ -2,21 +2,26 @@ name: Test
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["*"]
+    branches: ['*']
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10']
+        node-versions: ['18.x']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: "3.8"
+          python-version: ${{ matrix.python-version}}
       - uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: ${{matrix.node-versions}}
 
       - name: Get pip cache dir
         id: pip-cache
@@ -63,5 +68,3 @@ jobs:
           python -m pip install -e .[tests]
           # Run the TS/JS tests
           jlpm run test
-
-      
