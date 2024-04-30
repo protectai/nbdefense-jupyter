@@ -143,5 +143,8 @@
         "jlpm clean:all"
       ]
     }
+  },
+  "resolutions": {
+    "sanitize-html": "^2.12.1"
   }
 }
